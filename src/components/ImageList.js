@@ -1,4 +1,3 @@
-import { Container } from 'react-bootstrap';
 import ImageShow from './ImageShow';
 function ImageList (props) {
     const {imageList} = props;
