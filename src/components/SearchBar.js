@@ -10,18 +10,16 @@ function SearchBar (props) {
         setSearchTerm(event.target.value);
     }
     const handleSubmit = async(event) => {
-        if (event.key === 'Enter' || event === 'submitButtonPressed') {
-            const imageList = await fetchImages(searchTerm);
-            setImageList(imageList);
-            setSearchTerm('');
-        }
-
+        event.preventDefault();
+        const imageList = await fetchImages(searchTerm);
+        setImageList(imageList);
+        setSearchTerm('');
     }
     return (
-            <>
-                <Form.Control className="mb-3" placeholder="Enter search term" type="search" onChange={(event) => handleSearch(event)} onKeyDown={(event)=>{handleSubmit(event)}} value={searchTerm}/>
-                <Button className="mb-3" type="submit" onClick={()=>{handleSubmit('submitButtonPressed')}}>Search</Button>
-            </>
+            <form onSubmit={handleSubmit}>
+                <Form.Control className="mb-3" placeholder="Enter search term" type="search" onChange={handleSearch} value={searchTerm}/>
+                <Button className="mb-3" type="submit">Search</Button>
+            </form>
     )
 }
 
