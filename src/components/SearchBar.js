@@ -1,5 +1,7 @@
 import { useState } from "react";
 import fetchImages from "../api";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 function SearchBar (props) {
     const [searchTerm, setSearchTerm] = useState('');
@@ -16,10 +18,10 @@ function SearchBar (props) {
 
     }
     return (
-        <div>
-            <input type="search" onChange={(event) => handleSearch(event)} onKeyDown={(event)=>{handleSubmit(event)}} value={searchTerm}/>
-            <button type="submit" onClick={()=>{handleSubmit('submitButtonPressed')}}>Submit</button>
-        </div>
+            <>
+                <Form.Control className="mb-3" placeholder="Enter search term" type="search" onChange={(event) => handleSearch(event)} onKeyDown={(event)=>{handleSubmit(event)}} value={searchTerm}/>
+                <Button className="mb-3" type="submit" onClick={()=>{handleSubmit('submitButtonPressed')}}>Search</Button>
+            </>
     )
 }
 
