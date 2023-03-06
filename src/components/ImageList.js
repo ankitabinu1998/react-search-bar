@@ -6,7 +6,7 @@ function ImageList (props) {
         <div className='d-flex flex-wrap justify-content-center'>
             {imageList.map(image => {
             imageDetails = (({ id, alt_description, urls }) => ({ id, alt_description, urls }))(image);
-            return <ImageShow imageDetails={imageDetails}/>
+            return <ImageShow key={imageDetails.id} imageDetails={imageDetails}/>
             })}
         </div>
 
